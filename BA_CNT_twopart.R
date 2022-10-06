@@ -98,13 +98,13 @@ mesh1.sd.ba[mesh1$idx$loc] <- log(1+locs.sd$ba)
 
 spde.cnt <- inla.spde2.matern(
   mesh=mesh1, alpha=alpha,
-  B.tau=cbind(ltau0, nu, cbind(1, -mesh1.sd.cnt)), 
-  B.kappa=cbind(lkappa0, -1, cbind(1, 0.0*mesh1.sd.cnt)))
+  B.tau=cbind(ltau0, nu, cbind(-1, -mesh1.sd.cnt)), 
+  B.kappa=cbind(lkappa0, -1, cbind(0.0, 0.0*mesh1.sd.cnt)))
 
 spde.ba <- inla.spde2.matern(
   mesh=mesh1, alpha=alpha,
-  B.tau=cbind(ltau0, nu, cbind(1, -mesh1.sd.ba)),
-  B.kappa=cbind(lkappa0, -1, cbind(1, 0.0*mesh1.sd.ba)))
+  B.tau=cbind(ltau0, nu, cbind(-1, -mesh1.sd.ba)),
+  B.kappa=cbind(lkappa0, -1, cbind(0.0, 0.0*mesh1.sd.ba)))
 
 if(FALSE) { ### checking the model
   
