@@ -96,8 +96,8 @@ mesh1.sd.z[mesh1$idx$loc] <- log(1+locs.sd$z)
 
 spde.z <- inla.spde2.matern(
   mesh=mesh1, alpha=alpha,
-  B.tau=cbind(ltau0, nu, cbind(1, -mesh1.sd.z)), 
-  B.kappa=cbind(lkappa0, -1, cbind(1, 0.0*mesh1.sd.z)))
+  B.tau=cbind(ltau0, nu, cbind(-1, -mesh1.sd.z)), 
+  B.kappa=cbind(lkappa0, -1, cbind(0.0, 0.0*mesh1.sd.z)))
 
 
 if(FALSE) { ### checking the model
@@ -180,7 +180,7 @@ inla.setOption(
   pardiso.license='~/.pardiso.lic',
   smtp='pardiso',
   inla.mode='experimental',
-  num.threads='8:-16') ### to run on a 128 threads machine
+  num.threads='6:-8') ### to run on a 128 threads machine
 
 gc(reset=TRUE)
 
